@@ -1,0 +1,11 @@
+{
+    "validUsername": {
+        "email": "missedcall8576@gmail.com",
+        "password": "Snapdeal@2025"
+    },
+    "invalidUsername": {
+        "email": "missedcall8576@gm.com",
+        "password": "Snapdeal@2025"
+    }
+
+}
