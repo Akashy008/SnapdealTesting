@@ -1,11 +1,8 @@
-const ProductListingPage = {
-  filterByBrand(brand) {
-    cy.get('[placeholder="Search by Brand"]').click()
-
-    cy.get('.sd-input.js-searchable-box').type(brand, { force: true });
-    cy.get('.btn.applyFilters.lfloat').click({ force: true });
-
-  }
-};
-
-export default ProductListingPage
+const Productlisting = {
+    brandProduct(brand){
+        cy.get(`[class="col-xs-20 searchformInput keyword"]`).type(brand)
+        cy.get('[class="searchTextSpan"]').click()
+        
+    }
+}
+export default Productlisting

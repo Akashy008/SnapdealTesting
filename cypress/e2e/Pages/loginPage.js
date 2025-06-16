@@ -1,16 +1,24 @@
 const LoginPage = {
- openLogin() {
-  cy.visit('https://www.snapdeal.com/')
-  cy.contains('Login').click()
-  cy.get("#userMobilenoEmail").should('be.visible')
-},
 
+  visit() {
+    cy.visit('https://www.snapdeal.com/');
+    cy.contains('span', 'Sign In').click();
 
-enterCredentials(Email) {
-  cy.get("#userMobilenoEmail").type(Email);
-  cy.get("#checkUserBtn").click();
-}
+    // The Sign in iframe opens immediately
+    cy.frameLoaded('iframe[src*="login"]'); // make sure cypress-iframe is installed
+  },
 
-}
+  enterUsername(username) {
+    cy.iframe()
+      .find('input#userName')
+      .type(username);
+  },
 
-export default LoginPage
+  clickContinue() {
+    cy.iframe()
+      .find('button#checkUserBtn')
+      .click();
+  }
+};
+
+export default LoginPage;

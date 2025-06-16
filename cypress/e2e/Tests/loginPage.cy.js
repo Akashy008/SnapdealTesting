@@ -1,20 +1,19 @@
-import HomePage from '../Pages/Homepage'
+
 import LoginPage from '../Pages/loginPage'
-import loginData from '../../fixtures/loginData.json'
 
-describe('Testing Search Functionality', () => {
-    it('Searching with keyword and applying filter by Brand', () => {
-        Homepage.openSite()
-        Search.searchingProduct("Shirt")
-        ProductListingPage.filterByBrand("Ketch")
+describe('Snapdeal Login Tests', () => {
 
-        cy.get('.searchformInput.keyword').should('have.value', 'Shirt');  
+  it('should navigate to login and enter username', () => {
+    
+    LoginPage.visit();
+ 
+    LoginPage.enterUsername('1231231234');  
+      
+    LoginPage.clickContinue();
+ 
+    cy.iframe()
+      .find('input#j_username')
+      .should('be.visible'); 
+  });
 
-        cy.get('.dp-widget-link[pogid]', {timeout:10000}) 
-          .should('exist') 
-          .first()
-          .invoke('removeAttr', 'target')
-          .click({ force: true })
-    });
 });
-
