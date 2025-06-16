@@ -2,10 +2,14 @@ import Homepage from '../Pages/Homepage'
 import CategoryPage from '../Pages/CategoryPage'
 import productData from '../../fixtures/product.json'
 
-describe('Category Navigation', () => {
-  it('Goes to T-Shirts under Men\'s Fashion', () => {
-    Homepage.openSite()
-    CategoryPage.goToCategory(productData.category, productData["sub category"])
-    cy.url().should('include', 'footwear-sports-shoes')
-  })
-})
+describe('Snapdeal Categories Tests', () => {
+
+  it('should navigate to Casual Shoes under Mens Fashion', () => {
+   
+  Homepage.openSite()
+    CategoryPage.goToCategory();
+    cy.url().should('include', 'casual-shoes'); 
+    cy.get('h1').should('contain.text', 'Casual Shoes'); 
+  });
+
+});
